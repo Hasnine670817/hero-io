@@ -1,10 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
 @import "tailwindcss";
 @plugin "daisyui";
 
 @theme {
   /* font family */
-  /* --font-poppins: "Poppins", serif;
-    --font-obviously: "Obviously_Semi"; */
+  --font-inter: "Inter", sans-serif;
 
   /* color */
   /* --color-black: #000000;
@@ -15,10 +16,15 @@
   --breakpoint-md: 768px;
   --breakpoint-lg: 992px;
   --breakpoint-xl: 1200px;
-  --breakpoint-2xl: 1440px;
+  --breakpoint-2xl: 1400px;
+  --breakpoint-3xl: 1600px;
 }
 
 @layer base {
+  body {
+    @apply font-inter bg-[#F5F5F5] min-h-screen
+  }
+
   span {
     @apply inline-block;
   }
@@ -35,7 +41,23 @@
 
 @layer components {
   .container-custom {
-    @apply sm:max-w-[540px] md:max-w-[720px] lg:max-w-[960px] xl:max-w-[1120px] 2xl:max-w-[1352px] mx-auto px-5;
+    @apply sm:max-w-[540px] md:max-w-[720px] lg:max-w-[960px] xl:max-w-[1120px] 2xl:max-w-[1352px] 3xl:max-w-[1480px] mx-auto px-5;
+  }
+
+  .header-list li a {
+    @apply relative
+  }
+
+  .header-list li a.active {
+    @apply !text-[#632EE3]
+  }
+
+  .header-list li a::after {
+    @apply content-[""] absolute w-full h-0.5 left-0 bottom-0 opacity-0 bg-[#632EE3]
+  }
+
+  .header-list li a.active::after {
+    @apply opacity-100
   }
 }
 
