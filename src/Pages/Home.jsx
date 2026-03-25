@@ -1,10 +1,11 @@
 import { useContext } from "react";
 import { AppContext } from "../Context/AppContext";
 import Banner from "../Sections/Banner";
+import TrendingApps from "../Sections/TrendingApps";
 
 const Home = () => {
 
-    const { user, loading } = useContext(AppContext);
+    const { loading } = useContext(AppContext);
 
     if (loading) {
         return (
@@ -18,6 +19,9 @@ const Home = () => {
         <main>
             {/* banner section */}
             <Banner></Banner>
+
+            {/* Trending Apps */}
+            <TrendingApps></TrendingApps>
         </main>
     );
 };

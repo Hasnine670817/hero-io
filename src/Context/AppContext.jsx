@@ -3,24 +3,37 @@ import { Children, createContext, useEffect, useState } from "react";
 export const AppContext = createContext(null);
 
 const AppProvider = ({children}) => {
-    const [user, setUser] = useState([]);
+    const [data, setData] = useState([]);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        fetch('https://jsonplaceholder.typicode.com/users')
+        fetch("/Data.json")
             .then(res => res.json())
             .then(data => {
-                setUser(data);
+                setData(data);
                 setLoading(false)
             })
             .catch(error => {
                 console.error(error);
-                setLoading(false)
+                setLoading(false);
             })
-    }, []);
+    }, [])
+
+    // useEffect(() => {
+    //     fetch('https://jsonplaceholder.typicode.com/users')
+    //         .then(res => res.json())
+    //         .then(data => {
+    //             setUser(data);
+    //             setLoading(false)
+    //         })
+    //         .catch(error => {
+    //             console.error(error);
+    //             setLoading(false)
+    //         })
+    // }, []);
 
     const value = {
-        user,
+        data,
         loading
     }
 

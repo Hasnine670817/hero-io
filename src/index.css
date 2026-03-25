@@ -37,6 +37,10 @@
   a {
     @apply transition-all duration-300 cursor-pointer max-h-none inline-block;
   }
+
+  span {
+    @apply inline-block
+  }
 }
 
 @layer components {

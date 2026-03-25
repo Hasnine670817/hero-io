@@ -31,7 +31,7 @@ const Header = () => {
                         {links}
                     </ul>
                     <div>
-                        <Link to={"/"} className="text-sm lg:text-base py-2 px-4 lg:py-2.5 lg:px-4 rounded-sm text-white font-semibold bg-[linear-gradient(125.04deg,_#632EE3_5.68%,_#9F62F2_88.38%)] hover:opacity-80 flex items-center gap-2.5"><FaGithub /> Contribute</Link>
+                        <Link to={"https://github.com/"} target='_blank' className="text-sm lg:text-base py-2 px-4 lg:py-2.5 lg:px-4 rounded-sm text-white font-semibold bg-[linear-gradient(125.04deg,_#632EE3_5.68%,_#9F62F2_88.38%)] hover:opacity-80 flex items-center gap-2.5"><FaGithub /> Contribute</Link>
                     </div>
                 </nav>
 
