@@ -4,6 +4,7 @@ import MainLayouts from "../Layouts/MainLayouts";
 import Home from "../Pages/Home";
 import ErrorPage from "../Pages/ErrorPage";
 import Apps from "../Pages/Apps";
+import AppDetails from "../Pages/AppDetails";
 
 
 const router = createBrowserRouter([
@@ -18,6 +19,10 @@ const router = createBrowserRouter([
             {
                 path: "/apps",
                 element: <Apps></Apps>
+            },
+            {
+                path: "/app/:id",
+                element: <AppDetails></AppDetails>
             },
             {
                 path: "*",
