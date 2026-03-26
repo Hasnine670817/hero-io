@@ -2,7 +2,6 @@
 
 [![React](https://img.shields.io/badge/React-18.2.0-blue?logo=react)](https://reactjs.org/) 
 [![Tailwind CSS](https://img.shields.io/badge/TailwindCSS-3.3.2-blue?logo=tailwind-css)](https://tailwindcss.com/) 
-[![License](https://img.shields.io/badge/License-MIT-green)](LICENSE)
 
 A modern **Hero IO** showcasing apps with features like search, install/uninstall, rating charts, and route-based loaders. Fully responsive and interactive.
 
