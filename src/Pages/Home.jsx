@@ -10,7 +10,7 @@ const Home = () => {
     if (loading) {
         return (
             <div className="flex justify-center items-center h-[60vh] transition-opacity duration-700">
-                <span className="loading loading-bars loading-xl text-red-600"></span>
+                <span className="loading loading-bars loading-xl text-[#7E45EA]"></span>
             </div>
         );
     }

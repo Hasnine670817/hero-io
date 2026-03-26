@@ -1,16 +1,39 @@
-# React + Vite
+# Hero IO 🚀
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+[![React](https://img.shields.io/badge/React-18.2.0-blue?logo=react)](https://reactjs.org/) 
+[![Tailwind CSS](https://img.shields.io/badge/TailwindCSS-3.3.2-blue?logo=tailwind-css)](https://tailwindcss.com/) 
+[![License](https://img.shields.io/badge/License-MIT-green)](LICENSE)
 
-Currently, two official plugins are available:
+A modern **Hero IO** showcasing apps with features like search, install/uninstall, rating charts, and route-based loaders. Fully responsive and interactive.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+### 🌐 Live Demo
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Check out the live app here: [Hero IO](https://hero-io-app-01.surge.sh)
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 🌟 Features
+
+- Browse all apps with live **search**.
+- **Install / Uninstall** apps with `localStorage` persistence.
+- App details page with:
+  - Ratings, charts, downloads
+  - Description & developer info
+- **Route-based loader** for smooth navigation.
+- Toast notifications for user actions.
+- Responsive design for all devices.
+
+---
+
+## 🛠 Technologies
+
+- **React 18** + **Context API**
+- **React Router v6**
+- **Tailwind CSS**
+- **Recharts** (charts for ratings)
+- **React Toastify** (notifications)
+- **localStorage** (persist installed apps)
+- **React Icons** (icons)
+

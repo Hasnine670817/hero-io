@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { AppContext } from "../Context/AppContext";
 import DataCard from "../Components/DataCard";
 import { IoSearchOutline } from "react-icons/io5";
@@ -7,17 +7,46 @@ import { Link } from "react-router-dom";
 
 const Apps = () => {
 
-    const { data } = useContext(AppContext);
+    const { data, loading } = useContext(AppContext);
 
     const [search, setSearch] = useState("");
-
-    // filter apps by title (case insensitive)
+    const [debouncedSearch, setDebouncedSearch] = useState("");
+    const [searchLoading, setSearchLoading] = useState(false);
     const filteredApps = data.filter((app) =>
-        app.title.toLowerCase().includes(search.toLowerCase())
+        app.title.toLowerCase().includes(debouncedSearch.toLowerCase())
     );
+
+    useEffect(() => {
+        const handler = setTimeout(() => {
+            setDebouncedSearch(search);
+        }, 300); // 0.3s delay
+
+        return () => clearTimeout(handler);
+    }, [search]);
+
+    useEffect(() => {
+        if (debouncedSearch !== "") {
+            setSearchLoading(true);
+
+            const timer = setTimeout(() => {
+                setSearchLoading(false);
+            }, 300); // short animation for UX
+
+            return () => clearTimeout(timer);
+        }
+    }, [debouncedSearch]);
+
 
     const handleClearInputValue = () => {
         setSearch("");
+    }
+
+    if (loading) {
+        return (
+            <div className="flex justify-center items-center h-[60vh] transition-opacity duration-700">
+                <span className="loading loading-bars loading-xl text-[#7E45EA]"></span>
+            </div>
+        );
     }
 
     return (
@@ -37,6 +66,8 @@ const Apps = () => {
                         </form>
                     </div>
 
+                    
+
                     {filteredApps.length === 0 ? (
                         <div className="flex flex-col justify-center items-center py-14 md:py-20 px-5">
                             <img className="max-w-[200px] sm:max-w-[300px] lg:max-w-none mx-auto" src={AppError} alt="Error 404" />
@@ -44,13 +75,19 @@ const Apps = () => {
                             <p className="text-sm md:text-base lg:text-xl text-[#627382]">The App you are requesting is not found on our system.  please try another apps</p>
                             <Link onClick={handleClearInputValue} className="text-sm lg:text-base py-2 px-4 lg:py-3 lg:px-5 rounded-sm text-white font-semibold mt-4 bg-[linear-gradient(125.04deg,_#632EE3_5.68%,_#9F62F2_88.38%)] hover:opacity-80 md:w-[150px] text-center">Go Back!</Link>
                         </div>
-                    ) : (
-                        <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4">
+                    ) : searchLoading ? (
+                            <div className="flex justify-center py-4">
+                                <span className="loading loading-bars loading-md text-[#7E45EA]"></span>
+                            </div>
+                        ) : (
+                            <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4">
                             {
                                 filteredApps.map((item, idx) => <DataCard item={item} key={idx}></DataCard>)
                             }
                         </div>
                     )}
+                        
+                    
                 </div>
             </div>
         </section>

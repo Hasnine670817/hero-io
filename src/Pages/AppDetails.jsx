@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { BarChart, Bar, XAxis, YAxis, ResponsiveContainer, Tooltip } from "recharts";
 import { AppContext } from "../Context/AppContext";
 import DownloadIcon from "../assets/images/download.svg";
@@ -7,13 +7,14 @@ import StarIcon from "../assets/images/star.svg";
 import LikeIcon from "../assets/images/like.svg";
 
 const AppDetails = () => {
-    const { data } = useContext(AppContext);
+    const { data, installedApps, handleInstallButton } = useContext(AppContext);
     const { id } = useParams();
 
     
     const app = data.find((item) => item.id === Number(id));
-    console.log(data);
-    const [installed, setInstalled] = useState(false);
+    // const [installed, setInstalled] = useState(false);
+
+    const isInstalled = installedApps.find(item => item.id === app.id);
 
     if (!app) {
         return (
@@ -75,14 +76,16 @@ const AppDetails = () => {
                         </div>
 
                         {/* Install Button */}
-                        <button
-                            onClick={() => setInstalled(true)}
-                            disabled={installed}
-                            className={`mt-6 px-5 py-3 rounded text-white text-xl font-semibold ${
-                            installed ? "bg-gray-400 cursor-not-allowed" : "bg-[#00D390] hover:bg-green-600"
+                        <button 
+                            onClick={() => handleInstallButton(app)} 
+                            disabled={isInstalled}
+                            className={`mt-6 px-5 py-3 rounded text-white text-xl font-semibold transition-all duration-300
+                            ${isInstalled 
+                                ? "bg-gray-400 cursor-not-allowed" 
+                                : "bg-[#00D390] hover:bg-green-600"
                             }`}
                         >
-                            {installed ? "Installed" : "Install Now"} ({app.size} MB)
+                            {isInstalled ? "Installed" : `Install Now (${app.size} MB)`}
                         </button>
                     </div>
                 </div>
